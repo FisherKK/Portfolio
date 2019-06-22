@@ -64,7 +64,7 @@ def replace_categories_columns(df_data, df_categories_new):
 
 
 def drop_duplicates(df):
-    """Removes duplicates from sent dataframe.
+    """Removes duplicates from sent dataframe. Returns a copy.
 
     Parameters:
     -----------
@@ -106,7 +106,7 @@ def drop_rows_with_nan_values(df):
 
 
 def remove_single_value_categories(df_data):
-    """Removes columns containing only one value.
+    """Removes columns containing only one value. Works on a copy.
 
     Parameters:
     -----------
