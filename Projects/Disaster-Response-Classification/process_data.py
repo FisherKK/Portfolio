@@ -10,7 +10,7 @@ from project.config import (
 from project.preprocessing.wrangling import (
     merge_messages_and_categories,
     expand_categories,
-    binarize_categories,
+    categories_to_integers,
     replace_categories_columns,
     drop_duplicates,
     drop_columns_with_too_many_nan_values,
@@ -43,13 +43,17 @@ parser.add_argument("--output_path",
 
 
 def etl_pipeline_assembly():
+    """Function which loads .csv files with disaster messages and their multi-categories. It merges, cleans the data,
+    and saves the final result in sql database file of .db format. Path to files and output file are passed via
+    Python args.
+    """
     args = parser.parse_args()
 
     df_messages = load_csv(args.messages_path)
     df_categories = load_csv(args.categories_path)
 
     df_categories_extended = expand_categories(df_categories)
-    df_categories_extended = binarize_categories(df_categories_extended)
+    df_categories_extended = categories_to_integers(df_categories_extended)
 
     df_data = merge_messages_and_categories(df_messages, df_categories)
     df_data = replace_categories_columns(df_data, df_categories_extended)
