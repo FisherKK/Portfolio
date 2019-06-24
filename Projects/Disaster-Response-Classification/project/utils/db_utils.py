@@ -1,3 +1,4 @@
+import pandas as pd
 from sqlalchemy import create_engine
 
 
@@ -27,3 +28,7 @@ def df_to_sql_table(df, table_name, engine):
         Wrapper (engine) created via sqlalchemy lib over .db file which allows interaction with database.
     """
     df.to_sql(table_name, engine, index=False)
+
+
+def sql_table_to_df(table_name, engine):
+    return pd.read_sql_table(table_name, engine)

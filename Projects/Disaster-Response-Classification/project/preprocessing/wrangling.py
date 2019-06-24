@@ -27,7 +27,7 @@ def expand_categories(df_categories):
     """
     temp = df_categories.copy()
     temp = temp["categories"].str.split(";", expand=True)
-    temp.columns = [s.split("-")[0] for s in temp.iloc[0]]
+    temp.columns = ["category_" + s.split("-")[0] for s in temp.iloc[0]]
     return temp
 
 

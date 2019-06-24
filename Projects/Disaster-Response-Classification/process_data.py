@@ -36,7 +36,7 @@ parser.add_argument("--categories_path",
                     default=DEFAULT_CATEGORIES_FILE_PATH,
                     type=str)
 
-parser.add_argument("--output_path",
+parser.add_argument("--db_path",
                     help="Absolute path for .db file where output of etl pipeline will be saved.",
                     default=DEFAULT_DB_OUTPUT_FILE_PATH,
                     type=str)
@@ -62,7 +62,7 @@ def etl_pipeline_assembly():
     df_data = drop_rows_with_nan_values(df_data)
     df_data = remove_single_value_categories(df_data)
 
-    df_to_sql_table(df_data, SQL_TABLE_NAME, get_database_engine(args.output_path))
+    df_to_sql_table(df_data, SQL_TABLE_NAME, get_database_engine(args.db_path))
 
 
 if __name__ == "__main__":
