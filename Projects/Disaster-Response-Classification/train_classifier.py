@@ -47,6 +47,7 @@ def train_and_save_model():
     model_cv.fit(X_train, Y_train)
 
     model = model_cv.best_estimator_
+    print(model)
 
     train_pred = model.predict(X_train)
     train_score = get_classification_result(Y_train, train_pred, [c for c in df_data.columns if "category" in c])
