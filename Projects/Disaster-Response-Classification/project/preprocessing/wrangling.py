@@ -1,4 +1,5 @@
 import pandas as pd
+import numpy as np
 
 
 def merge_messages_and_categories(df_messages, df_categories):
@@ -12,22 +13,25 @@ def merge_messages_and_categories(df_messages, df_categories):
     df_categories: pd.DataFrame
          Dataframe containing categories of disaster messages in raw format.
     """
-    temp = pd.merge(df_messages, df_categories, how="left", on="id")
+    temp = pd.merge(df_messages, df_categories, on="id")
     return temp
 
 
-def expand_categories(df_categories):
+def expand_categories(df_data):
     """Splits category names which are stacked into single string. Creates separate column for each category. Works on
     a copy.
 
     Parameters:
     -----------
-    df_categories: pd.DataFrame
-        Dataframe containing categories of disaster messages in raw format.
+    df_data: pd.DataFrame
+        Dataframe which is a result of merging messages and categories.
     """
-    temp = df_categories.copy()
-    temp = temp["categories"].str.split(";", expand=True)
-    temp.columns = ["category_" + s.split("-")[0] for s in temp.iloc[0]]
+    temp = df_data.copy()
+    temp = temp["categories"].str.split(pat=';', expand=True)
+
+    categories = temp.iloc[0, :].apply(lambda x: x[:-2])
+    temp.columns = ["category_{}".format(c) for c in categories]
+
     return temp
 
 
@@ -42,7 +46,9 @@ def categories_to_integers(df_categories):
     temp = df_categories.copy()
     for column in temp:
         temp[column] = temp[column].str[-1]
-        temp[column] = temp[column].astype(int)
+        temp[column] = temp[column].astype(np.int)
+        temp[column] = temp[column].apply(lambda x: 1 if x >= 1 else 0)
+
     return temp
 
 
@@ -58,7 +64,7 @@ def replace_categories_columns(df_data, df_categories_new):
         Dataframe containing wrangled categories.
     """
     temp = df_data.copy()
-    temp.drop(columns=["categories"], inplace=True)
+    temp = temp.drop("categories", axis=1)
     temp = pd.concat([temp, df_categories_new], axis=1)
     return temp
 
@@ -89,19 +95,6 @@ def drop_columns_with_too_many_nan_values(df, drop_threshold=0.5):
     temp = df.copy()
     temp = temp.loc[:, temp.isnull().mean() < drop_threshold]
     temp = temp.reset_index(drop=True)
-    return temp
-
-
-def drop_rows_with_nan_values(df):
-    """Removes rows containing nan values. Works on a copy.
-
-    Parameters:
-    -----------
-    df: pd.DataFrame
-        Dataframe from which rows will be removed.
-    """
-    temp = df.copy()
-    temp = temp.dropna()
     return temp
 
 

@@ -26,11 +26,11 @@ def get_lgbm_model_pipeline(**kwargs):
     ])
 
     parameters = {
-        # "text_pipeline__vect__ngram_range": ((1, 1), (1, 2)),
-        # "text_pipeline__vect__max_df": (0.5, 0.75, 1.0),
-        # "text_pipeline__vect__max_features": (None, 5000, 10000),
-        # "clf__estimator__num_leaves": [5, 10, 15, 20],
-        # "clf__estimator__max_depth": [-1, 5, 15, 25],
+        "text_pipeline__vect__ngram_range": ((1, 1), (1, 2)),
+        "text_pipeline__vect__max_df": (0.75, 1.0),
+        "text_pipeline__vect__max_features": (None, 7500),
+        "clf__estimator__num_leaves": [5, 10, 20],
+        "clf__estimator__max_depth": [10, 15, 25],
         "clf__estimator__seed": [RANDOM_SEED]
     }
 
