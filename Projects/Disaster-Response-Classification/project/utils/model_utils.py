@@ -13,3 +13,14 @@ def save_model(path, model):
         Class which is a predictor.
     """
     joblib.dump(model, path)
+
+
+def load_model(path):
+    """Loads model.
+
+    Parameters:
+    -----------
+    path: string
+        Model filepath including model name.
+    """
+    return joblib.load(path)

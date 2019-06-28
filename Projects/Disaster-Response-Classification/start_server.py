@@ -8,10 +8,8 @@ from flask import (
 )
 
 import plotly
-from plotly.graph_objs import Bar
 
-from sklearn.externals import joblib
-
+# Required for pipeline loaded with joblib
 from project.preprocessing.feature_engineering import tokenize
 
 from project.utils.db_utils import (
@@ -19,10 +17,17 @@ from project.utils.db_utils import (
     sql_table_to_df
 )
 
+from project.utils.model_utils import load_model
+
 from project.config import (
     DEFAULT_DB_OUTPUT_FILE_PATH,
     DEFAULT_MODEL_OUTPUT_FILE_PATH,
     SQL_TABLE_NAME
+)
+
+from project.web.visualisation import (
+    add_category_count_graph,
+    add_source_count_graph
 )
 
 parser = argparse.ArgumentParser()
@@ -37,68 +42,6 @@ parser.add_argument("--model_path",
                     type=str)
 
 app = Flask(__name__)
-
-
-def add_category_count_graph(df):
-    """Returns jsonified plotly barplot of message sources grouped and counted by category.
-
-    Parameters:
-    -----------
-    df: pd.DataFrame
-        Dataframe with preprocessed data of messages and categories.
-    """
-    category_counts = df[[c for c in df.columns if "category" in c]].sum(axis=0)
-    category_names = [c[9:] for c in category_counts.index]
-    category_counts = category_counts.values
-
-    return {
-        "data": [
-            Bar(
-                x=category_names,
-                y=category_counts
-            )
-        ],
-
-        "layout": {
-            "title": "Number of messages per category",
-            "yaxis": {
-                "title": "Count"
-            },
-            'height': 600,
-            'margin': dict(b=200, pad=4),
-        }
-    }
-
-
-def add_source_count_graph(df):
-    """Returns jsonified plotly barplot of message sources grouped and counted by genre.
-
-    Parameters:
-    -----------
-    df: pd.DataFrame
-        Dataframe with preprocessed data of messages and categories.
-    """
-    genre_counts = df["genre"].value_counts()
-    genre_names = genre_counts.index
-    genre_counts = genre_counts.values
-
-    return {
-        "data": [
-            Bar(
-                x=genre_names,
-                y=genre_counts
-            )
-        ],
-
-        "layout": {
-            "title": "Source of gathered messages",
-            "yaxis": {
-                "title": "Count"
-            },
-            'height': 600,
-            'margin': dict(b=200, pad=4),
-        }
-    }
 
 
 @app.route("/")
@@ -135,7 +78,7 @@ def main():
     args = parser.parse_args()
 
     df_data = sql_table_to_df(SQL_TABLE_NAME, get_database_engine(args.db_path))
-    model = joblib.load(DEFAULT_MODEL_OUTPUT_FILE_PATH)
+    model = load_model(DEFAULT_MODEL_OUTPUT_FILE_PATH)
 
     app.run(host="0.0.0.0", port=3001, debug=True)
 
