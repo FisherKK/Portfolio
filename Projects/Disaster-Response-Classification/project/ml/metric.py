@@ -14,7 +14,7 @@ def _metric_per_class(Y_expected, Y_pred, metric):
     metric: function
         Function which is able to calculate metric for two vectors.
     """
-    return [metric(Y_expected.iloc[:, i], Y_pred[:, i], average="micro") for i in range(Y_pred.shape[1])]
+    return [metric(Y_expected.iloc[:, i], Y_pred[:, i], average="weighted") for i in range(Y_pred.shape[1])]
 
 
 def get_classification_result(Y_expected, Y_pred, class_names):
