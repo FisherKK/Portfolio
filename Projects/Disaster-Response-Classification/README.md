@@ -74,7 +74,7 @@ MultiOutputClassifier(estimator=LGBMClassifier(
 
 #### Model score per class
 ```
-                          f1_score	precision   recall
+                        f1_score	precision recall
                related	0.822350	0.830450	0.838070
                request	0.908440	0.909965	0.913790
                  offer	0.998820	0.998805	0.998856
@@ -181,7 +181,7 @@ Attached labels: ['related' 'request' 'aid_related' 'medical_help' 'direct_repor
 
 ![Flask webpage example 1](images/flask_example.png?raw=true "Flask Example 1")
 
-- interactive dataset overview
+- interactive training dataset overview
 
 ![Flask webpage example 2](images/plot_1.png?raw=true "Flask Example 2")
 
@@ -194,4 +194,4 @@ Attached labels: ['related' 'request' 'aid_related' 'medical_help' 'direct_repor
 
 ## License
 
-This project is licensed under the MIT License - see the [LICENSE.md](LICENSE.md) file for details
+This project is licensed under the MIT License.
