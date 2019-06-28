@@ -51,7 +51,7 @@
         <div class="page-header">
             <h1 class="text-center">Overview of Training Dataset</h1>
         </div>
-    {% endblock %}
+
         <p style="font-size:1.1vw;">
             This project utilizes NLP and machine learning in order to categorize messages incoming during time of crisis.
             Attaching appropriate label to the message would allow it to reach organization responsible for providing help.
@@ -60,6 +60,7 @@
         <p style="font-size:1.1vw;">
             This dataset was provided by <a href="https://www.figure-eight.com/" target="blank">Figure Eight</a> and used to train an algorithm to classify disaster messages.
         </p>
+    {% endblock %}
     {% for id in ids %}
         <div id="{{id}}"></div>
     {% endfor %}
