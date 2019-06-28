@@ -40,6 +40,13 @@ app = Flask(__name__)
 
 
 def add_category_count_graph(df):
+    """Returns jsonified plotly barplot of message sources grouped and counted by category.
+
+    Parameters:
+    -----------
+    df: pd.DataFrame
+        Dataframe with preprocessed data of messages and categories.
+    """
     category_counts = df[[c for c in df.columns if "category" in c]].sum(axis=0)
     category_names = [c[9:] for c in category_counts.index]
     category_counts = category_counts.values
@@ -64,6 +71,13 @@ def add_category_count_graph(df):
 
 
 def add_source_count_graph(df):
+    """Returns jsonified plotly barplot of message sources grouped and counted by genre.
+
+    Parameters:
+    -----------
+    df: pd.DataFrame
+        Dataframe with preprocessed data of messages and categories.
+    """
     genre_counts = df["genre"].value_counts()
     genre_names = genre_counts.index
     genre_counts = genre_counts.values
@@ -90,6 +104,7 @@ def add_source_count_graph(df):
 @app.route("/")
 @app.route("/index")
 def index():
+    """Responsible for displaying index.html"""
     graphs = [ add_source_count_graph(df_data), add_category_count_graph(df_data)]
 
     ids = ["graph-{}".format(i) for i, _ in enumerate(graphs)]
@@ -100,6 +115,7 @@ def index():
 
 @app.route("/predict")
 def predict():
+    """Endpoint responsible for processing the query and displaying results."""
     message = request.args.get("query", "")
 
     classification_labels = model.predict([message])[0]
@@ -111,6 +127,9 @@ def predict():
 
 
 def main():
+    """Loads data from .db file. Loads model from .pkl file. Stats interactive Flask webserver that allows querying the
+    model and displays the result for inserted message.
+    """
     global df_data, model
 
     args = parser.parse_args()
