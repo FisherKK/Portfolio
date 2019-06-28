@@ -60,10 +60,11 @@
         <p style="font-size:1.1vw;">
             This dataset was provided by <a href="https://www.figure-eight.com/" target="blank">Figure Eight</a> and used to train an algorithm to classify disaster messages.
         </p>
+
+        {% for id in ids %}
+            <div id="{{id}}"></div>
+        {% endfor %}
     {% endblock %}
-    {% for id in ids %}
-        <div id="{{id}}"></div>
-    {% endfor %}
 </div>
 
 <script type="text/javascript">

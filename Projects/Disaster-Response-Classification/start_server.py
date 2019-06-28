@@ -102,10 +102,10 @@ def add_source_count_graph(df):
 
 
 @app.route("/")
-@app.route("/index")
+@app.route("/master")
 def index():
     """Responsible for displaying index.html"""
-    graphs = [ add_source_count_graph(df_data), add_category_count_graph(df_data)]
+    graphs = [add_source_count_graph(df_data), add_category_count_graph(df_data)]
 
     ids = ["graph-{}".format(i) for i, _ in enumerate(graphs)]
     graphJSON = json.dumps(graphs, cls=plotly.utils.PlotlyJSONEncoder)
