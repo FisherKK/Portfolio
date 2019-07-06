@@ -1,3 +1,5 @@
+Two years ago when had started my ML related education I created portfolio repository, named [MyRoadToAI](https://github.com/FisherKK/F1sherKK-MyRoadToAI), where I kept uploading new exercises or mini projects. As some time have passed I'd like to restart this idea and increase the quality of my work.
+
 ## Projects
 
 ### NLP
@@ -16,7 +18,7 @@
 
 ## Blog posts & Articles
 
-My other technical articles (related to Android, Scripting and QA Automation) can be found at my Medium profile: 
+My other technical articles (related to Android, scripting and QA automation) can be found at my Medium profile: 
 [@krzyk.kamil](https://medium.com/@krzyk.kamil).
 
 | Article Name | Date |
