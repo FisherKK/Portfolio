@@ -3,7 +3,16 @@
 ### NLP
 | Project Name | Description | Date |
 | ------------- |:-------------:|:-------------:|
-| **[Disaster Message Classification](https://github.com/FisherKK/Portfolio/tree/master/Projects/Disaster-Response-Classification)** | Project is a showcase how to create ETL Pipeline and Machine Learning Pipeline in order build NLP model capable of attaching one of 35  categories to the message. Interaction with model can be done via website hosted on Flask server.| Jan 26, 2019 | 
+| **[Disaster Message Classification](https://github.com/FisherKK/Portfolio/tree/master/Projects/Disaster-Response-Classification)** | Project is a showcase how to create ETL Pipeline and Machine Learning Pipeline in order build NLP model capable of attaching one of 35  categories to the message. Interaction with model can be done via website hosted on Flask server.| Jun 26, 2019 | 
+
+
+## Showcases
+
+### Data Engineering
+| Showcase Name | Description | Date |
+| ------------- |:-------------:|:-------------:|
+| **[Pandas IO Formats Comparison](https://github.com/FisherKK/Portfolio/blob/master/Showcases/Data%20Engineering/Pandas%20IO%20Formats%20Comparison/Pandas%20IO%20Formats%20Comparison.ipynb)** | Comparing save and load times as well as compression of all data formats supported by Pandas. | Jul 6, 2019 | 
+
 
 ## Blog posts & Articles
 
