@@ -5,12 +5,12 @@ Two years ago when had started my ML related education I created portfolio repos
 ### NLP
 | Project Name | Description | Date |
 | ------------- |:-------------:|:-------------:|
-| **[Disaster Message Classification](https://github.com/FisherKK/Portfolio/tree/master/Projects/Disaster-Response-Classification)** | Project is a showcase how to create ETL Pipeline and Machine Learning Pipeline in order build NLP model capable of attaching any of 35 categories to the message. Interaction with model can be done via website hosted on Flask server.| Jun 26, 2019 | 
+| **[Disaster Message Classification](https://github.com/FisherKK/Portfolio/tree/master/Projects/Disaster-Response-Classification)** | The project is a showcase how to create ETL Pipeline and Machine Learning Pipeline in order build NLP model capable of attaching any of 35 categories to the message. Interaction with model can be done via website hosted on Flask server.| Jun 26, 2019 | 
 
 ### Data Visualisation
 | Project Name | Description | Date |
 | ------------- |:-------------:|:-------------:|
-| **[Write Data Driven Blog Post - Dota 2 Analysis](https://github.com/FisherKK/Portfolio/tree/master/Projects/Disaster-Response-Classification)** | Project is a showcase how to create ETL Pipeline and Machine Learning Pipeline in order build NLP model capable of attaching any of 35 categories to the message. Interaction with model can be done via website hosted on Flask server.| Jun 26, 2019 | 
+| **[Write Data Driven Blog Post - Dota 2 Analysis](https://github.com/FisherKK/Portfolio/tree/master/Projects/Dota-Analysis)** | The goal of this project is to present the capability of gathering and analyzing data about a specific topic  (in this case, Dota 2 player scene). It consists of ETL process where data is downloaded, cleaned, and transformed, as well as the data analysis process. The output of the project is a blog post communicating lessons learned. | Jul 20, 2019 | 
 
 
 ## Showcases
