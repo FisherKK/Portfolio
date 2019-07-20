@@ -10,7 +10,7 @@ Two years ago when had started my ML related education I created portfolio repos
 ### Data Visualisation
 | Project Name | Description | Date |
 | ------------- |:-------------:|:-------------:|
-| **[Write Data Driven Blog Post - Dota 2 Analysis](https://github.com/FisherKK/Portfolio/tree/master/Projects/Dota-Analysis)** | The goal of this project is to present the capability of gathering and analyzing data about a specific topic  (in this case, Dota 2 player scene). It consists of ETL process where data is downloaded, cleaned, and transformed, as well as the data analysis process. The output of the project is a blog post communicating lessons learned. | Jul 20, 2019 | 
+| **[Write Data Driven Blog Post](https://github.com/FisherKK/Portfolio/tree/master/Projects/Dota-Analysis)** | The goal of this project is to present the capability of gathering and analyzing data about a specific topic  (in this case, Dota 2 player scene). It consists of ETL process where data is downloaded, cleaned, and transformed, as well as the data analysis process. The output of the project is a blog post communicating lessons learned. | Jul 20, 2019 | 
 
 
 ## Showcases
