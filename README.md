@@ -7,6 +7,11 @@ Two years ago when had started my ML related education I created portfolio repos
 | ------------- |:-------------:|:-------------:|
 | **[Disaster Message Classification](https://github.com/FisherKK/Portfolio/tree/master/Projects/Disaster-Response-Classification)** | Project is a showcase how to create ETL Pipeline and Machine Learning Pipeline in order build NLP model capable of attaching any of 35 categories to the message. Interaction with model can be done via website hosted on Flask server.| Jun 26, 2019 | 
 
+### Data Visualisation
+| Project Name | Description | Date |
+| ------------- |:-------------:|:-------------:|
+| **[Write Data Driven Blog Post - Dota 2 Analysis](https://github.com/FisherKK/Portfolio/tree/master/Projects/Disaster-Response-Classification)** | Project is a showcase how to create ETL Pipeline and Machine Learning Pipeline in order build NLP model capable of attaching any of 35 categories to the message. Interaction with model can be done via website hosted on Flask server.| Jun 26, 2019 | 
+
 
 ## Showcases
 
