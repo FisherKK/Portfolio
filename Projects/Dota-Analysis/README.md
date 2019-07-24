@@ -18,7 +18,7 @@ Consequently it's structure will consists of the following parts:
 
 ### Files Overview
 Thinking process preview:
-- [CRISP-DSM pipeline.ipynb](notebook/CRISP-DSM%20pipeline.ipynb) - showcase notebook where the way how data was fetched and
+- [CRISP-DM pipeline.ipynb](notebook/CRISP-DM%20Pipeline.ipynb) - showcase notebook where the way how data was fetched and
 how the thinking process during answering business questions looked is presented
 
 Backend side:
@@ -61,7 +61,7 @@ Thinking process preview setup:
 1. Run jupyter notebook instance from terminal by invoking `jupyter notebook` command. (available by default 
 2. http://localhost:8888 in any browser)
 3. Navigate to `<project_dir>/notebook`.
-4. Launch `CRISP-DSM pipeline.ipynb`
+4. Launch `CRISP-DM pipeline.ipynb`
 
 ## Stated Problem
 In this project I have decided to take a closer look at [Dota 2](http://blog.dota2.com/) professional scene. It is most 
