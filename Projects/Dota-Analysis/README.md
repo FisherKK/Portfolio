@@ -18,7 +18,7 @@ Consequently it's structure will consists of the following parts:
 
 ### Files Overview
 Thinking process preview:
-- [CRISP-DSM pipeline.ipynb](notebook/ETL%20Pipeline.ipynb) - showcase notebook where the way how data was fetched and
+- [CRISP-DSM pipeline.ipynb](notebook/CRISP-DSM%20pipeline.ipynb) - showcase notebook where the way how data was fetched and
 how the thinking process during answering business questions looked is presented
 
 Backend side:
