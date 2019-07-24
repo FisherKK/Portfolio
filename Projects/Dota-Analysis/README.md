@@ -46,14 +46,14 @@ Dependencies setup:
 3. Install requirements.txt file via pip.
 4. Setup project package by navigating to `<project_dir>` and running:
 ```
-`python setup.py develop`
+$ python setup.py develop
 ```
 
 
 Result reproduction:
 1. Navigate to `<project_dir>` and run:
 ```
-python generate_report.py
+$ python generate_report.py
 ```
 
 
