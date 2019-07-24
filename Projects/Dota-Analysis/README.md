@@ -23,14 +23,14 @@ how the thinking process during answering business questions looked is presented
 
 Backend side:
 - [generate_report.py](generate_report.py) - script that fetches, transforms and cleans the data, saves it to [
-data](/data) dir, it generates graphs which are an answer to stated business questions and saves them in [image](/image)
+data](data) dir, it generates graphs which are an answer to stated business questions and saves them in [image](image)
 dir
 
 Fronted side:
 - blog post available under following [LINK](https://medium.com/@krzyk.kamil/dota-2-valid-career-path-or-just-extraordinary-form-of-entertainment-91c456ea82fc)
 
 Other:
-- As an exception, downloaded data (in folder [data](/data)) and generated graphs (in folder [image](/image)) used in
+- As an exception, downloaded data (in folder [data](data)) and generated graphs (in folder [image](image)) used in
 blog post were kept in this repository. This is because data changes in realtime and same results might not be reproduced in the future.
 
 
