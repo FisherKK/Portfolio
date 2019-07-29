@@ -1,0 +1,11 @@
+{% extends "index.html" %}
+{% block title %}Results{% endblock %}
+
+{% block content %}
+<h5 class="text-center">{{message}}</h5>
+
+<div align="center">
+    <img src="/static/{{filename}}" alt="Selected Image" width="auto" height="360px">
+</div>
+
+{% endblock %}
