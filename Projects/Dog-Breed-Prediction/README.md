@@ -62,31 +62,33 @@ available to network during training process.
 
 #### Examples
 
-Notebook example 1:
-![Notebook example 1](images/example1.png?raw=true "Example 1")
+<img src="https://github.com/FisherKK/Portfolio/blob/master/Projects/Dog-Breed-Prediction/images/example1.png" width="500px" height="auto"/>
 
-Notebook example 2:
-![Notebook example 2](images/example2.png?raw=true "Example 1")
+---
 
-Notebook example 3:
-![Notebook example 3](images/example3.png?raw=true "Example 1")
+<img src="https://github.com/FisherKK/Portfolio/blob/master/Projects/Dog-Breed-Prediction/images/example2.png" width="500px" height="auto"/>
 
-Notebook example 4:
-![Notebook example 4](images/example4.png?raw=true "Example 1")
+---
+
+<img src="https://github.com/FisherKK/Portfolio/blob/master/Projects/Dog-Breed-Prediction/images/example3.png" width="500px" height="auto"/>
+
+---
+
+<img src="https://github.com/FisherKK/Portfolio/blob/master/Projects/Dog-Breed-Prediction/images/example4.png" width="500px" height="auto"/>
 
 ### Flask webpage
 
 The [start_server.py](start_server.py) launches interactive web application with file picker and possibility to get
 model prediction.
 
-Application example 1:
-![Flask webpage example 1](images/application_example1.png?raw=true "Flask Example 1")
+---
+<img src="https://github.com/FisherKK/Portfolio/blob/master/Projects/Dog-Breed-Prediction/images/application_example1.png" width="600px" height="auto"/>
 
-Application example 2:
-![Flask webpage example 2](images/application_example2.png?raw=true "Flask Example 2")
+---
+<img src="https://github.com/FisherKK/Portfolio/blob/master/Projects/Dog-Breed-Prediction/images/application_example2.png" width="600px" height="auto"/>
 
-Application example 3:
-<img src="https://github.com/FisherKK/Portfolio/blob/master/Projects/Dog-Breed-Prediction/images/application_example3.png" width="600px" height="auto" />
+---
+<img src="https://github.com/FisherKK/Portfolio/blob/master/Projects/Dog-Breed-Prediction/images/application_example3.png" width="600px" height="auto"/>
 
 ## Built With
 
