@@ -22,7 +22,7 @@ Project requires Python 3.6.6 with installed [virtualenv](https://pypi.org/proje
 
 1. Pull the project.
 2. Setup new virtualenv with Python 3.6.6.
-3. Install requirements.txt file via pip.
+3. Install [requirements.txt](requirements.txt) file via pip.
 4. Move to project directory.
 5. Run jupyter notebook `Showcase.ipynb` to download data and generate models. As an alternative, already trained models 
 can be downloaded from the following link https://www.dropbox.com/s/ryuqhmmmovjgs9f/TrainedModels.zip?dl=0 and copied 
@@ -86,8 +86,7 @@ Application example 2:
 ![Flask webpage example 2](images/application_example2.png?raw=true "Flask Example 2")
 
 Application example 3:
-![Flask webpage example 3](images/application_example3.png?raw=true "Flask Example 3")
-
+<img src="https://github.com/FisherKK/Portfolio/blob/master/Projects/Dog-Breed-Prediction/images/application_example3.png" width="600px" height="auto" />
 
 ## Built With
 
