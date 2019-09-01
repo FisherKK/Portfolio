@@ -9,6 +9,18 @@ from project.data.preprocessing import (
 
 
 def load_mnist_data(ohe=False):
+    """Loadads and preprocess MNIST dataset. Returns data divided into train, val and test datasets.
+
+    Parameters:
+    -----------
+    ohe: boolean
+       Flag used to decide whether output targets should be one-hot-encoded.
+
+    Returns:
+    -----------
+    data: tuple
+        Three element tuple containing preprocessed MNIST data divided into with train, val test datasets.
+    """
     mnist = tf.keras.datasets.mnist
     (x_train, y_train), (x_test, y_test) = mnist.load_data()
 
@@ -24,4 +36,5 @@ def load_mnist_data(ohe=False):
 
     x_train, x_val, y_train, y_val = split(x_train, y_train)
 
-    return (x_train, y_train), (x_val, y_val), (x_test, y_test)
+    data = (x_train, y_train), (x_val, y_val), (x_test, y_test)
+    return data

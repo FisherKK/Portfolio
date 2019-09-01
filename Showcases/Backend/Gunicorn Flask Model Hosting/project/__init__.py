@@ -1,8 +1,9 @@
 import os
-from project.config import MODEL_DIR
+from project.config.constants import MODEL_DIR
 
 
 def create_dir(dir_):
+    """Recurrently creates directory and it subdirectories."""
     temp = ""
     for part in dir_.split(os.sep):
         temp = os.path.join(temp, part)

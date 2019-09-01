@@ -15,10 +15,26 @@ from tensorflow.keras.models import (
 from tensorflow.keras.callbacks import EarlyStopping
 from tensorflow.keras.optimizers import Adam
 
-from project.config import GLOBAL_SEED
+from project.config.constants import GLOBAL_SEED
 
 
 def train_xgboost_model(train_data, val_data, test_data):
+    """Builds xgboost model on parameters prepared for MNIST dataset.
+
+    Parameters:
+    -----------
+    train_data: tuple
+        Tuple containing ndarrays with trains samples and train targets. Targets shouldn't be one-hot-encoded.
+    val_data: tuple
+        Tuple containing ndarrays with val samples and val targets. Targets shouldn't be one-hot-encoded.
+    test_data: tuple
+        Tuple containing ndarrays with test samples and test targets. Targets shouldn't be one-hot-encoded.
+
+    Returns:
+    -----------
+    model: XGBClassifier
+        Trained XGBClassifier model.
+    """
     train_samples, train_targets = train_data
     val_samples, val_targets = val_data
     test_samples, test_targets = test_data
@@ -61,6 +77,22 @@ def train_xgboost_model(train_data, val_data, test_data):
 
 
 def train_simple_mlp_model(train_data, val_data, test_data):
+    """Builds tf.keras model on parameters prepared for MNIST dataset.
+
+    Parameters:
+    -----------
+    train_data: tuple
+        Tuple containing ndarrays with trains samples and train targets. Targets should be one-hot-encoded.
+    val_data: tuple
+        Tuple containing ndarrays with val samples and val targets. Targets should be one-hot-encoded.
+    test_data: tuple
+        Tuple containing ndarrays with test samples and test targets. Targets should be one-hot-encoded.
+
+    Returns:
+    -----------
+    model: tensorflow.python.keras.engine.sequential.Sequential
+        Trained tf.keras model.
+    """
     train_samples, train_targets_ohe = train_data
     val_samples, val_targets_ohe = val_data
     test_samples, test_targets_ohe = test_data
