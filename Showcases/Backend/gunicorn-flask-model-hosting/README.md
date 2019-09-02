@@ -3,16 +3,54 @@
 Project is capable of hosting, tf.keras and XGBClassifier models trained on MNIST dataset, and making them accessible
 through the rest endpoint. 
 
-Project contains three scrips:
+Scripts overview:
 - [train_models.py](train_models.py) - builds new tf.keras and XGBClassifier models and saves them in [model](model) 
 directory in `.h5` and `.pkl` formats. 
 - [start_flask_server.py](start_flask_server.py) - loads models and starts Flask server, exposing `/verify_vector_image`
 endpoint that returns response from both models.
+- [inference_speed_test.py](inference_speed_test.py) - loads models and performs 1000 predictions for the same image, 
+returns averaged prediction time
 - [wsgi.py](wsgi.py) - wrapper for Flask app that will be used by Gunicorn.
+
+## Models
+
+Models are already included in project dir [model](model) as the files are small.
+
+### Training models
+
+Run [train_models.py](train_models.py) to spawn new models in [model](model) directory.
+
+### Model Performance
+
+Performance on MNIST dataset:
+- tf.keras
+    ```
+    Model results:
+	 train | loss: 0.01267085460151577, accuracy: 0.9959166646003723
+	   val | loss: 0.13343262002021947, accuracy: 0.9762499928474426
+	  test | loss: 0.11085368104698634, accuracy: 0.9781000018119812
+    ```
+- XGBClassifier
+    ```
+    Model results:
+	 train | accuracy: 0.990125
+	  test | accuracy: 0.964
+    ```
+    
+### Inference Times
+According to [inference_speed_test.py](inference_speed_test.py) script:
+- mlp is capable of making ~833 predictions on single thread:
+    ```
+    1000 inference trials took on average '0.0012' (min: 0.0011, max: 0.0351, std: 0.0011) seconds.
+    ```
+- xgboost is capable of making ~1429 predictions on single thread
+    ```
+    1000 inference trials took on average '0.0007' (min: 0.0005, max: 0.0378, std: 0.0012) seconds.
+    ```
 
 ## Endpoint Info
 
-Models response is available under `http://<ip>:<port>/verify_vector_image` url after server is started.
+Model response is available at `http://0.0.0.0:8887/verify_vector_image` url after server is started.
 
 ## Request Info
 
@@ -28,6 +66,10 @@ Sent JSON should have following format:
 
 Filled example of such vector can be found [here](testing/mnist_image_example.json), it also can be used for testing whether service works or not.
 
+## Gunicorn Launch Parameters
+- recommended `<workers_num>` is `(2 * CPU) + 1` according to the [documentation](http://docs.gunicorn.org/en/stable/design.html?fbclid=IwAR3oB-YMwRJYdoBjLPc14pmaNd_BY2xkJZPHyrGPVEO3_l51MZGUR60kxSA#how-many-workers)
+- at the same time documentation says that 4-12 should be enough
+
 ## Local Server
 
 ### Prerequisites
@@ -37,25 +79,37 @@ Project requires Python 3.6.6 with installed [virtualenv](https://pypi.org/proje
 ### Setup
 
 1. Pull the project.
-2. Setup new virtualenv with Python 3.6.6.
+2. Setup new virtualenv with Python 3.6.7.
 3. Install [requirements.txt](requirements.txt) file via pip.
 4. Move to project directory.
-5. Run [train_models.py](train_models.py) to spawn models in [model](model) directory.
-6. Start Gunicorn server with command `gunicorn --bind <ip>:<port> --workers=<workers_num> wsgi:app`. 
-7. Access endpoint server at `http://<ip>:<port>/verify_vector_image` endpoint.
+5. Start Gunicorn server with command `gunicorn --bind 0.0.0.0:8887 --workers=<workers_num> wsgi:app`. 
+6. Access endpoint server at `http://0.0.0.0:8887/verify_vector_image` endpoint.
+        
+## Local Server with Docker
 
-### Gunicorn Launch Parameters
-- for testing purposes, according to [config file](project/config/constants.py), `<ip>:<port>` was set to `0.0.0.0:8887`
-- recommended `<workers_num>` is `(2 * CPU) + 1` according to the [documentation](http://docs.gunicorn.org/en/stable/design.html?fbclid=IwAR3oB-YMwRJYdoBjLPc14pmaNd_BY2xkJZPHyrGPVEO3_l51MZGUR60kxSA#how-many-workers)
-- at the same time documentation says that 4-12 should be enough
+### Prerequisites
 
-### Example Request
+Requires [Docker](https://www.docker.com/) app installed and started.
 
-- Starting server `$ gunicorn --bind 0.0.0.0:8887 --workers=12  wsgi:app`
+### Setup
+
+1. Pull the project.
+2. Setup new virtualenv with Python 3.6.7.
+3. Install [requirements.txt](requirements.txt) file via pip.
+4. Move to project directory.
+5. Edit Gunicorn parameters inside [Dockerfile](Dockerfile) CMD line. Default number of workers is set to 12.
+6. Build docker container with the following command `$ docker build --tag flask_gunicorn_app .`.
+7. Start docker process by running `$ docker run --detach -p 8887:8887 flask_gunicorn_app`.
+8. Access endpoint server at `http://0.0.0.0:8887/verify_vector_image` endpoint.
+
+## Example Request
+
+### Data Preparation
+
 - Finding image for classification. In this case I've taken random image from MNIST dataset:
     
     <img src="https://github.com/FisherKK/Portfolio/blob/master/Showcases/Backend/gunicorn-flask-model-hosting/image/mnist_image_example.png" width="200" height="auto"/>
-    
+
 - Turning image into `.json` file.
 
 ```
@@ -89,9 +143,26 @@ Project requires Python 3.6.6 with installed [virtualenv](https://pypi.org/proje
     0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 
     0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0
   ]
-}
+```
+- Example file is available here [mnist_image_example.json](testing/mnist_image_example.json).
+
+### Local Run
+
+- Starting server `$ gunicorn --bind 0.0.0.0:8887 --workers=12  wsgi:app`.
+  
+### Docker Run
+
+- Starting docker.
+- Starting server `$ docker run --detach -p 8887:8887 flask_gunicorn_app`.
+- Checking if server is running on proper port by calling `$ docker ps`.
 
 ```
+MacBook-Pro-Kamil:~ kamilkrzyk$ docker ps
+CONTAINER ID        IMAGE                COMMAND                  CREATED             STATUS              PORTS                    NAMES
+96888ebcc280        flask_gunicorn_app   "gunicorn --bind 0.0…"   4 seconds ago       Up 2 seconds        0.0.0.0:8887->8887/tcp   eager_nightingale
+```
+
+### Getting Response
 
 - Navigate to project root.
 - Example curl request:
@@ -103,7 +174,3 @@ Project requires Python 3.6.6 with installed [virtualenv](https://pypi.org/proje
     - server response:
         ```
         {"mlp":{"predicted_number":5},"xgboost":{"predicted_number":5}}
-        ```
-        
-
-  
