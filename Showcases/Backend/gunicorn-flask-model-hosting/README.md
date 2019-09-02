@@ -14,7 +14,7 @@ returns averaged prediction time
 
 ## Models
 
-Models are already included in project dir [model](model) as the files are small.
+Models are already included in project [model](model) directory, as the files are small.
 
 ### Training models
 

@@ -126,9 +126,6 @@ dmypy.json
 # Idea
 .idea/
 
-# Input & Output dirs
-/model/*
-
 # Data Fromats
 .csv
 .parqxfbe
