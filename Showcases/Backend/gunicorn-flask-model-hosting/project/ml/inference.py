@@ -12,7 +12,7 @@ def predict_with_xgboost_model(model, sample):
     model: XGBClassifier
         Trained model.
     sample: ndarray
-        Numpy array containing flattened image.
+        Numpy array containing flattened testing.
 
     Returns:
     -----------
@@ -32,7 +32,7 @@ def predict_with_mlp_model(model, sample):
     model: tensorflow.python.keras.engine.sequential.Sequential
         Trained model.
     sample: ndarray
-        Numpy array containing flattened image.
+        Numpy array containing flattened testing.
 
     Returns:
     -----------

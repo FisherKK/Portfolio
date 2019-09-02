@@ -5,24 +5,24 @@ from project.config.constants import GLOBAL_SEED
 
 
 def flatten(samples):
-    """Turns 3-dimensional array into 2-dimensional by merging 2nd and 3rd dimensions responsible for image width and
+    """Turns 3-dimensional array into 2-dimensional by merging 2nd and 3rd dimensions responsible for testing width and
     height.
 
     Parameters:
     -----------
     samples: ndarray
-        3-dimensional matrix holding images where:
-            - 1st dimension is a number of images
-            - 2nd dimension is image width
-            - 3rd dimension is image height
+        3-dimensional matrix holding testing where:
+            - 1st dimension is a number of testing
+            - 2nd dimension is testing width
+            - 3rd dimension is testing height
     sample: ndarray
-        Numpy array containing flattened image.
+        Numpy array containing flattened testing.
 
     Returns:
     -----------
     flattened_samples: ndarray
-        2-dimensional matrix holding images where:
-            - 1st dimension is a number of images
+        2-dimensional matrix holding testing where:
+            - 1st dimension is a number of testing
             - 2nd dimension is a vector of pixel values
     """
     samples_num = samples.shape[0]
@@ -31,14 +31,14 @@ def flatten(samples):
 
 
 def min_max_scale_image_data(samples, min_val=0.0, max_val=255.0):
-    """Scales image values to <0.0, 1.0> range.
+    """Scales testing values to <0.0, 1.0> range.
 
     Parameters:
     -----------
     samples: ndarray
-        Container with image or images. Can be either 1-dimensional vector holding pixel values or 2-dimensional matrix
+        Container with testing or testing. Can be either 1-dimensional vector holding pixel values or 2-dimensional matrix
         where:
-            - 1st dimension is a number of images
+            - 1st dimension is a number of testing
             - 2nd dimension is a vector of pixel values
     min_val: float
         Minimum value of the pixel. In RGB min value is 0.0.
@@ -81,8 +81,8 @@ def split(samples, targets, ratio=0.2, shuffle=True):
     Parameters:
     -----------
     samples: ndarray
-        Array containing data. Can be either 2-dimensional array with flattened images or 3-dimensional data with
-        image matrices.
+        Array containing data. Can be either 2-dimensional array with flattened testing or 3-dimensional data with
+        testing matrices.
     targets: targets
         Array containing expected results of prediction (class indices) for each corresponding row in samples array.
 
