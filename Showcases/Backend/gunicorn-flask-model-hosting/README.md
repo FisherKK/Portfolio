@@ -43,7 +43,7 @@ According to [inference_speed_test.py](inference_speed_test.py) script:
     ```
     1000 inference trials took on average '0.0012' (min: 0.0011, max: 0.0351, std: 0.0011) seconds.
     ```
-- xgboost is capable of making ~1429 predictions on single thread
+- xgboost is capable of making ~1429 predictions on single thread:
     ```
     1000 inference trials took on average '0.0007' (min: 0.0005, max: 0.0378, std: 0.0012) seconds.
     ```
