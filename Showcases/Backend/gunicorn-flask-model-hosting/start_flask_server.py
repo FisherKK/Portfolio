@@ -1,4 +1,5 @@
 from flask import Flask, request, jsonify
+import traceback
 import numpy as np
 
 from project.config.model import MODEL_PROPERTIES
@@ -13,10 +14,9 @@ app = Flask(__name__)
 
 @app.route("/classify_image_vector", methods=["POST"])
 def classify_image_vector():
-    """It reads JSON file sent via application/json
-    content type, post request and looks for data vector under "image_vector" key. The vector is used to obtain
-    predictions from each model. Returns a JSON string if data vector is correct or error message if data format is
-    incorrect.
+    """It reads JSON file sent via application/json content type, post request and looks for data vector under
+    "image_vector" key. The vector is used to obtain predictions from each model. Returns a JSON string if data vector
+    is correct or error message if data format is incorrect.
 
     Returns:
     -----------
@@ -25,16 +25,16 @@ def classify_image_vector():
     """
     try:
         vector = np.array([request.json["image_vector"]])
-        result = jsonify({key: p["prediction_function"](model[key], vector) for key, p in MODEL_PROPERTIES.items()})
-        return result
+        return jsonify({k: p["prediction_function"](model[k], vector) for k, p in MODEL_PROPERTIES.items()})
     except ValueError:
-        return jsonify({"error": "Invalid data shape."})
+        traceback.print_exc()
+        return jsonify({"description": "Invalid data shape.", "input": request.json})
 
 
 def init_models():
     """Loads all models set in MODEL_PROPERTIES and loads them into global dictionary named model."""
     global model
-    model = {key: prop["load_function"](name=key) for key, prop in MODEL_PROPERTIES.items()}
+    model = {k: p["load_function"](name=k) for k, p in MODEL_PROPERTIES.items()}
 
 
 def _app():

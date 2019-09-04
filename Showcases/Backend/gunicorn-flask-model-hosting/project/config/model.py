@@ -35,5 +35,5 @@ MODEL_PROPERTIES = {
         "load_function": load_xgboost_model,
         "prediction_function": predict_with_xgboost_model,
         "ohe": False
-    },
+    }
 }

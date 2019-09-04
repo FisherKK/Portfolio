@@ -39,14 +39,15 @@ Performance on MNIST dataset:
     
 ### Inference Times
 According to [inference_speed_test.py](inference_speed_test.py) script:
-- mlp is capable of making ~833 predictions on single thread:
+- mlp is capable of making ~833 predictions/s on single thread:
     ```
     1000 inference trials took on average '0.0012' (min: 0.0011, max: 0.0351, std: 0.0011) seconds.
     ```
-- xgboost is capable of making ~1429 predictions on single thread:
+- xgboost is capable of making ~1429 predictions/s on single thread:
     ```
     1000 inference trials took on average '0.0007' (min: 0.0005, max: 0.0378, std: 0.0012) seconds.
     ```
+- as both models need to return predictions sequentially, **expected performance is ~526 predictions/s**.
 
 ## Endpoint Info
 
@@ -67,8 +68,11 @@ Sent JSON should have following format:
 Filled example of such vector can be found [here](testing/mnist_image_example.json), it also can be used for testing whether service works or not.
 
 ## Gunicorn Launch Parameters
-- recommended `<workers_num>` is `(2 * CPU) + 1` according to the [documentation](http://docs.gunicorn.org/en/stable/design.html?fbclid=IwAR3oB-YMwRJYdoBjLPc14pmaNd_BY2xkJZPHyrGPVEO3_l51MZGUR60kxSA#how-many-workers)
+- recommended `--workers` parameter value is `(2 * CPU) + 1` according to the [documentation](http://docs.gunicorn.org/en/stable/design.html?fbclid=IwAR3oB-YMwRJYdoBjLPc14pmaNd_BY2xkJZPHyrGPVEO3_l51MZGUR60kxSA#how-many-workers)
 - at the same time documentation says that 4-12 should be enough
+- parameter `--threads` is not used due to [GIL]((https://wiki.python.org/moin/GlobalInterpreterLock)) with prevents 
+CPython from usage of multi-threading and causes Tensorflow session issues, and causes bottleneck that makes endpoint
+return many 500 from random workers
 
 ## Local Server
 
@@ -174,3 +178,53 @@ CONTAINER ID        IMAGE                COMMAND                  CREATED       
     - server response:
         ```
         {"mlp":{"predicted_number":5},"xgboost":{"predicted_number":5}}
+        
+## Server Performance
+
+Note that metrics are based, on local server instance, on Mac Book Pro:
+```
+2,2 GHz Intel Core i7
+16 GB 2400 MHz DDR4
+Radeon Pro 555X 4096  MB
+Intel UHD Graphics 630 1536  MB
+```
+
+- Performance might differ depending on machine and system configuration, machine work load.
+- Performance on Docker might differ depending of it's internal configuration.
+
+### RPS Test
+For testing RPS I am using [wrk2](https://github.com/giltene/wrk2) tool with the following bash scripts:
+- [run_wrk.sh](tools/run_wrk.sh) - 16 threads and 64 connections, up to 10000 requests per second, 60 second long test
+- [post.lua](tools/post.lua) - containing JSON with image that will be sent to endpoint
+
+1. Install `wrk2`. (through Make, or homebrew)
+2. Enter [tools](tools) directory.
+3. Run `./run_wrk.sh`.
+
+Results for different worker configurations:
+```
+ 1: Requests/sec:    314.31
+ 2: Requests/sec:    391.41
+ 4: Requests/sec:    440.25
+ 8: Requests/sec:    546.10
+12: Requests/sec:    520.00
+16: Requests/sec:    490.02
+32: Requests/sec:    546.17
+```
+
+Performance on those models stops decreasing somewhere between **4 - 8 workers**.
+
+### Memory Usage
+
+Checking memory usage with `htop`.
+
+Single worker takes 240MB in this case:
+
+    <img src="https://github.com/FisherKK/Portfolio/blob/master/Showcases/Backend/gunicorn-flask-model-hosting/image/memory_usage.png" width="600" height="auto"/>
+
+
+### CPU Usage
+
+Checking if all CPUs are used with `htop`.
+
+        <img src="https://github.com/FisherKK/Portfolio/blob/master/Showcases/Backend/gunicorn-flask-model-hosting/image/cpu_usage.png" width="600" height="auto"/>

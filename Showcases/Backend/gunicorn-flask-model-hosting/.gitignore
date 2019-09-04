@@ -129,6 +129,8 @@ dmypy.json
 # Data Fromats
 .csv
 .parqxfbe
+.log
+.txt
 
 # MacBook's viewing preference files
 *.DS_Store
