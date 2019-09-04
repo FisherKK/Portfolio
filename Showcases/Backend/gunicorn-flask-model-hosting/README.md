@@ -114,7 +114,7 @@ Filled example of such vector can be found [here](testing/mnist_image_example.js
 ## Gunicorn Launch Parameters
 - recommended `--workers` parameter value is `(2 * CPU) + 1` according to the [documentation](http://docs.gunicorn.org/en/stable/design.html?fbclid=IwAR3oB-YMwRJYdoBjLPc14pmaNd_BY2xkJZPHyrGPVEO3_l51MZGUR60kxSA#how-many-workers)
 - at the same time documentation says that 4-12 should be enough
-- parameter `--threads` is not used due to [GIL]((https://wiki.python.org/moin/GlobalInterpreterLock)) with prevents 
+- parameter `--threads` is not used due to [GIL](https://wiki.python.org/moin/GlobalInterpreterLock) with prevents 
 CPython from usage of multi-threading and causes Tensorflow session issues, and causes bottleneck that makes endpoint
 return many 500 from random workers
 
