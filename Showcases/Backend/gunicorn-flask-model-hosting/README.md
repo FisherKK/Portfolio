@@ -220,11 +220,11 @@ Checking memory usage with `htop`.
 
 Single worker takes 240MB in this case:
 
-    <img src="https://github.com/FisherKK/Portfolio/blob/master/Showcases/Backend/gunicorn-flask-model-hosting/image/memory_usage.png" width="600" height="auto"/>
+   <img src="https://github.com/FisherKK/Portfolio/blob/master/Showcases/Backend/gunicorn-flask-model-hosting/image/memory_usage.png" width="600" height="auto"/>
 
 
 ### CPU Usage
 
 Checking if all CPUs are used with `htop`.
 
-        <img src="https://github.com/FisherKK/Portfolio/blob/master/Showcases/Backend/gunicorn-flask-model-hosting/image/cpu_usage.png" width="600" height="auto"/>
+   <img src="https://github.com/FisherKK/Portfolio/blob/master/Showcases/Backend/gunicorn-flask-model-hosting/image/cpu_usage.png" width="600" height="auto"/>
