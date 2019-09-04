@@ -272,3 +272,9 @@ Single worker takes 240MB in this case:
 Checking if all CPUs are used with `htop`.
 
    <img src="https://github.com/FisherKK/Portfolio/blob/master/Showcases/Backend/gunicorn-flask-model-hosting/image/cpu_usage.png" width="900" height="auto"/>
+   
+ ## Potential improvements
+ - Tensorflow has issues with multithreading, if service used only XGBClassifier it would be easy to boost performance
+ up to 3000 requests/s with usage of `--threads` parameter.
+ - To boost service performance with Tensorflow models [TF Serving](https://www.tensorflow.org/tfx/guide/serving) can be
+ used for serving data in batches.
