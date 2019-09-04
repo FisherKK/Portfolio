@@ -114,7 +114,7 @@ Filled example of such vector can be found [here](testing/mnist_image_example.js
 ## Gunicorn Launch Parameters
 - recommended `--workers` parameter value is `(2 * CPU) + 1` according to the [documentation](http://docs.gunicorn.org/en/stable/design.html?fbclid=IwAR3oB-YMwRJYdoBjLPc14pmaNd_BY2xkJZPHyrGPVEO3_l51MZGUR60kxSA#how-many-workers)
 - at the same time documentation says that 4-12 should be enough
-- parameter `--threads` is not used due to [GIL]((https://wiki.python.org/moin/GlobalInterpreterLock)) with prevents 
+- parameter `--threads` is not used due to [GIL](https://wiki.python.org/moin/GlobalInterpreterLock) witch prevents 
 CPython from usage of multi-threading and causes Tensorflow session issues, and causes bottleneck that makes endpoint
 return many 500 from random workers
 
@@ -272,9 +272,12 @@ Single worker takes 240MB in this case:
 Checking if all CPUs are used with `htop`.
 
    <img src="https://github.com/FisherKK/Portfolio/blob/master/Showcases/Backend/gunicorn-flask-model-hosting/image/cpu_usage.png" width="900" height="auto"/>
+<<<<<<< HEAD
    
  ## Potential improvements
  - Tensorflow has issues with multithreading, if service used only XGBClassifier it would be easy to boost performance
  up to 3000 requests/s with usage of `--threads` parameter.
  - To boost service performance with Tensorflow models [TF Serving](https://www.tensorflow.org/tfx/guide/serving) can be
  used for serving data in batches.
+=======
+>>>>>>> 8cdf4828a02601cca2bdaccbf995441127828f13
