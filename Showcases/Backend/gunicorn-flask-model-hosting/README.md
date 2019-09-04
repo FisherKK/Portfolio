@@ -245,7 +245,7 @@ For testing RPS I am using [wrk2](https://github.com/giltene/wrk2) tool with the
 2. Enter [tools](tools) directory.
 3. Run `./run_wrk.sh`.
 
-Results for different worker configurations:
+Results for different worker number:
 ```
  1: Requests/sec:    314.31
  2: Requests/sec:    391.41
