@@ -22,20 +22,64 @@ Run [train_models.py](train_models.py) to spawn new models in [model](model) dir
 
 ### Model Performance
 
-Performance on MNIST dataset:
-- tf.keras
-    ```
-    Model results:
-	 train | loss: 0.01267085460151577, accuracy: 0.9959166646003723
-	   val | loss: 0.13343262002021947, accuracy: 0.9762499928474426
-	  test | loss: 0.11085368104698634, accuracy: 0.9781000018119812
-    ```
-- XGBClassifier
-    ```
-    Model results:
-	 train | accuracy: 0.990125
-	  test | accuracy: 0.964
-    ```
+- Model architecture:
+    - tf.keras:
+        ```
+        Model: "sequential"
+        _________________________________________________________________
+        Layer (type)                 Output Shape              Param #   
+        =================================================================
+        dense (Dense)                (None, 512)               401920    
+        _________________________________________________________________
+        activation (Activation)      (None, 512)               0         
+        _________________________________________________________________
+        dropout (Dropout)            (None, 512)               0         
+        _________________________________________________________________
+        dense_1 (Dense)              (None, 384)               196992    
+        _________________________________________________________________
+        activation_1 (Activation)    (None, 384)               0         
+        _________________________________________________________________
+        dropout_1 (Dropout)          (None, 384)               0         
+        _________________________________________________________________
+        dense_2 (Dense)              (None, 10)                3850      
+        =================================================================
+        Total params: 602,762
+        Trainable params: 602,762
+        Non-trainable params: 0
+        ```
+        
+    - XGBClassifier:
+        ```
+        params = {
+            "max_depth": 5,
+            "eta": 0.275,
+            "subsample": 0.95,
+            "reg_lambda": 0.1,
+            "reg_alpha": 0.1,
+            "objective": "multi:softmax",
+            "predictor": "cpu_predictor",
+            "booster": "gbtree",
+            "tree_method": "hist",
+            "verbosity": 0,
+            "n_jobs": -1,
+            "random_state": GLOBAL_SEED
+        }
+        ```
+
+- Performance on MNIST dataset:
+    - tf.keras
+        ```
+        Model results:
+         train | loss: 0.01267085460151577, accuracy: 0.9959166646003723
+           val | loss: 0.13343262002021947, accuracy: 0.9762499928474426
+          test | loss: 0.11085368104698634, accuracy: 0.9781000018119812
+        ```
+    - XGBClassifier
+        ```
+        Model results:
+         train | accuracy: 0.990125
+          test | accuracy: 0.964
+        ```
     
 ### Inference Times
 According to [inference_speed_test.py](inference_speed_test.py) script:
