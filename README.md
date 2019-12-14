@@ -15,8 +15,7 @@ At start of 2016, when had started my ML related education I created portfolio r
 ### Image Processing
 | Project Name | Description | Date |
 | ------------- |:-------------:|:-------------:|
-| **[Dog Breed Prediction](https://github.com/FisherKK/Portfolio/tree/master/Projects/Dog-Breed-Prediction)** | System assembled from three models: human detector, dog detector and dog breed detector. For dog images it return most similar dog breed name out of 133 possible. For human it says
-to which dog breed human image is most similar to. | Aug 01, 2019 |
+| **[Dog Breed Prediction](https://github.com/FisherKK/Portfolio/tree/master/Projects/Dog-Breed-Prediction)** | System assembled from three models: human detector, dog detector and dog breed detector. For dog images it return most similar dog breed name out of 133 possible. For human it says to which dog breed human image is most similar to. | Aug 01, 2019 |
 
 ## Showcases
 
