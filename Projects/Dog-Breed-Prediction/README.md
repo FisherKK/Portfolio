@@ -10,7 +10,7 @@ It includes following scripts:
 - [start_server.py](start_server.py) - hosts flask webpage that allows to select image and receive classifications.
 
 It includes following notebooks:
-- [showcase.ipynb](notebook/showcase.ipynb) - data downloading, model building process and conclusions in one notebook
+- [showcase.ipynb](notebook/assemble.ipynb) - data downloading, model building process and conclusions in one notebook
 
 ## Getting Started
 
