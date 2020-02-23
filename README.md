@@ -33,6 +33,7 @@ At start of 2016, when had started my ML related education I created portfolio r
 | Algorithm | Description | Date |
 | ------------- |:-------------:|:-------------:|
 | **[K Nearest Neighbors](https://github.com/FisherKK/Portfolio/blob/master/Showcases/Machine%20Learning/Raw/K%20Nearest%20Neighbors%20-%20Raw%20Implementation.ipynb)** | Implementation of simple KNN algorithm with Euclidean and Manhattan distances | Nov 24, 2019 |
+| **[Naive Bayes](https://github.com/FisherKK/Portfolio/blob/master/Showcases/Machine%20Learning/Raw/Naive%20Bayes%20-%20Raw%20Implementation.ipynb)** | Examples of Naive Bayes usage and Gaussian Naive Bayes raw implementation. | Feb 23, 2019 |
 
 
 ## Blog posts & Articles
